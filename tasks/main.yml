@@ -10,6 +10,6 @@
   when: ansible_os_family == "Debian"
 
 - name: Set /etc/timezone to {{ timezone }}
-  file: dest=/etc/timezone content="{{ timezone }}"
+  copy: dest=/etc/timezone content="{{ timezone }}"
   notify: update tzdata
   when: ansible_os_family == "Debian"
