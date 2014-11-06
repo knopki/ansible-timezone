@@ -7,11 +7,18 @@
         group=root
         mode=0644
         backup=yes
+  sudo: {{ sudo }}
   when: ansible_os_family == "Debian"
   tags: [configuration,timezone]
 
 - name: Set /etc/timezone to {{ timezone }}
-  template: dest=/etc/timezone src=timezone.j2
+  template: dest=/etc/timezone
+            src=timezone.j2
+            owner=root
+            group=root
+            mode=0644
+            backup=yes
+  sudo: {{ sudo }}
   notify: update tzdata
   when: ansible_os_family == "Debian"
   tags: [configuration,timezone]

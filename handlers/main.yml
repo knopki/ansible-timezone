@@ -2,3 +2,5 @@
 # handlers file for timezone
 - name: update tzdata
   command: dpkg-reconfigure --frontend noninteractive tzdata
+  sudo: {{ sudo }}
+
