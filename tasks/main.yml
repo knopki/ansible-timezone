@@ -1,12 +1,7 @@
 ---
 # tasks file for timezone
-- name: Set /etc/localtime to {{ timezone }}
-  copy: src=/usr/share/zoneinfo/{{ timezone }}
-        dest=/etc/localtime
-        owner=root
-        group=root
-        mode=0644
-        backup={{ backup_etc_files }}
+- name: Copy timezone {{ timezone }} to /etc/localtime
+  command: rsync --itemize-changes --checksum --copy-links /usr/share/zoneinfo/{{ timezone }} /etc/localtime
   when: ansible_os_family == "Debian"
   tags: [configuration,timezone]
 
