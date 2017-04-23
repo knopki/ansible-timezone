@@ -1,5 +1,8 @@
 ---
 # tasks file for timezone
+- name: Install neccessary software packages
+  apt: name=rsync
+
 - name: Copy timezone {{ timezone }} to /etc/localtime
   command: rsync --itemize-changes --checksum --copy-links /usr/share/zoneinfo/{{ timezone }} /etc/localtime
   register: command_result
