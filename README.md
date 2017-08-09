@@ -1,3 +1,8 @@
+Deprecation warning
+========
+
+Unmaintained project. Please, use ansible timezone module.
+
 timezone
 ========
 
